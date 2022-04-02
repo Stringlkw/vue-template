@@ -1,0 +1,41 @@
+.el-avatar {
+  --el-avatar-bg-color: none !important;
+}
+
+.el-header {
+  --el-header-padding: 0 !important;
+  --el-header-height: 65px !important;
+}
+
+.el-main {
+  --el-main-padding: 0 !important;
+  line-height: 1rem !important;
+}
+
+.el-card__body{
+  padding: 0 !important;
+}
+
+
+.el-divider--horizontal {
+  margin: 10px 0 !important;
+  background-color: black;
+}
+
+.el-input {
+  --el-border-base: 0;
+}
+
+.el-form-item__content {
+  display: flex;
+  justify-content: center;
+}
+
+ .el-form-item__error {
+   color: #f30404 !important;
+   left: 23% !important;
+ }
+
+ .el-dialog{
+   --el-dialog-bg-color:#e8e7e6 !important;
+ }
