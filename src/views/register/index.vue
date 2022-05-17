@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { validatePassword } from '@/utils/validate'
   import SvgIcon from '@/components/SvgIcon/index.vue'
-  import useUserStore from '@/store/modules/useUserStore'
+  import useUserStore from '@/store/useUserStore'
   import { ref } from 'vue'
 
   // 数据源
@@ -13,12 +13,12 @@
   })
 
   // 验证规则
-  const registerRules = ref({
+  const registerRules = ref<any>({
     account: [
       {
         required: true,
         trigger: 'blur',
-        message: 'email为必填项',
+        message: '手机号为必填项',
       },
     ],
     username: [
@@ -50,7 +50,7 @@
         .then(() => {
           loading.value = true
         })
-        .catch((error) => {
+        .catch(() => {
           loading.value = false
         })
     })
@@ -58,24 +58,12 @@
 </script>
 <template>
   <div class="register-container">
-    <el-form
-      ref="registerFormRef"
-      class="register-form"
-      :model="registerForm"
-      :rules="registerRules"
-      au
-    >
+    <el-form ref="registerFormRef" class="register-form" :model="registerForm" :rules="registerRules" au>
       <h3 class="title">用户注册</h3>
-      <!--user-email-->
+      <!--user-phone-->
       <el-form-item class="register-form-item" prop="account">
-        <div class="item-icon"><svg-icon icon="email" /></div>
-        <el-input
-          v-model="registerForm.account"
-          placeholder="email"
-          name="email"
-          class="item-input"
-          type="text"
-        />
+        <div class="item-icon"><svg-icon icon="phone" /></div>
+        <el-input v-model="registerForm.account" placeholder="phone" name="phone" class="item-input" type="text" />
       </el-form-item>
 
       <!--username-->
@@ -86,8 +74,7 @@
           placeholder="username"
           name="username"
           class="item-input"
-          type="text"
-        />
+          type="text" />
       </el-form-item>
       <!--password-->
       <el-form-item class="register-form-item" prop="password">
@@ -98,13 +85,10 @@
           placeholder="password"
           name="password"
           class="item-input"
-          type="password"
-        />
+          type="password" />
       </el-form-item>
       <!--登录按钮-->
-      <el-button class="register-button" type="primary" :loading="loading" @click="handleRegister">
-        注册
-      </el-button>
+      <el-button class="register-button" type="primary" :loading="loading" @click="handleRegister">注册</el-button>
       <div class="sign-up">
         已有账号？
         <router-link :to="{ name: 'login' }" style="color: deepskyblue">直接登录</router-link>
@@ -117,11 +101,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     min-height: 100vh;
     width: 100%;
 
-    background-image: url(http://127.0.0.1:5000/image/background.jpg);
+    background-image: url(http://127.1:5000/image/background.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -146,17 +129,28 @@
         color: #fff;
         padding-bottom: 30px;
       }
-      .register-form-item {
+      :deep(.register-form-item) {
         width: 100%;
         .item-icon {
           display: inline-block;
           text-align: center;
           width: 5%;
         }
+        .el-form-item__error {
+          color: #f30404;
+          left: 23%;
+        }
+        .el-form-item__content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
         .item-input {
           width: 60%;
-          :deep(.el-input__inner) {
-            background-color: rgba(246, 189, 189, 0.22) !important;
+          .el-input__inner {
+            background-color: rgba(246, 189, 189, 0.22);
+            color: black;
+            border: 0;
           }
         }
       }

@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
 import 'element-plus/es/components/message/style/css'
-import 'vite-plugin-svg-icons/register'
+import 'virtual:svg-icons-register'
 
 const pinia = createPinia()
 

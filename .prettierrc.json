@@ -1,5 +1,5 @@
 {
-  "printWidth": 100,
+  "printWidth": 120,
   "tabWidth": 2,
   "useTabs": false,
   "semi": false,
@@ -16,5 +16,6 @@
   "proseWrap": "never",
   "htmlWhitespaceSensitivity": "ignore",
   "endOfLine": "auto",
-  "rangeStart": 0
+  "rangeStart": 2,
+  "bracketSameLine": true
 }
